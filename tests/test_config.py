@@ -46,6 +46,10 @@ class TestConfig:
     def test_init_config_yml(self, config_yml):
         assert 'mapping' in config_yml
 
+    def test_init_config_bad_file(self):
+        with pytest.raises(IOError):
+            Config.from_yaml(path='badfile')
+
     def test_dump_to_env(self, config_yml):
         config_yml.to_env()
 
