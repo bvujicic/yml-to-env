@@ -6,32 +6,34 @@ import yaml
 from yml_config import Config
 
 
-TEST_DATA = {
-    'bool': False,
-    'number': 1,
-    'string': 'test_string',
-    'sequence': ['item1', 'item2', 'item3'],
-    'mapping': {
-        'key1': 'value1',
-        'key2': {
-            'key2a': 'value2a',
-            'key2b': 'value2b'
-        },
-        'key3': ['value3a', 'value3b', 'value3c'],
-        'key4': True
+@pytest.fixture()
+def data():
+    return {
+        'bool': False,
+        'number': 1,
+        'string': 'test_string',
+        'sequence': ['item1', 'item2', 'item3'],
+        'mapping': {
+            'key1': 'value1',
+            'key2': {
+                'key2a': 'value2a',
+                'key2b': 'value2b'
+            },
+            'key3': ['value3a', 'value3b', 'value3c'],
+            'key4': True
+        }
     }
-}
 
 
 @pytest.fixture()
-def config_dict():
-    return Config(TEST_DATA)
+def config_dict(data):
+    return Config(data)
 
 
 @pytest.fixture()
-def config_yml():
+def config_yml(data):
     with open('config.yml', 'w') as fp:
-        yaml.dump(data=TEST_DATA, stream=fp)
+        yaml.dump(data=data, stream=fp)
 
     yield Config.from_yaml(path='config.yml')
 
