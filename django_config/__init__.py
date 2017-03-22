@@ -43,11 +43,12 @@ class Config(collections.UserDict):
 
     def to_env(self, data=None, parent_key=''):
         """
-        Exports config data as environment variables.
-        If a value is a sequence, export it as whitespace separated string.
-        If a value is a mapping,
+        Exports config data as environment variables by iterating through dictionary data.
+        If value is a sequence, export it as whitespace separated string.
+        If value is a mapping, continue recursively.
+        If value is literal, cast it as str and export directly.
 
-        :param data:
+        :param data: 
         :param parent_key:
         :return:
         """
