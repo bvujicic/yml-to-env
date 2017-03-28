@@ -74,3 +74,5 @@ class TestConfig:
 
         assert 'SET_KEY' in os.environ
         assert os.environ['SET_KEY'] == test_value
+        assert 'SET_KEY' in config_yml
+        assert config_yml['SET_KEY'] == test_value

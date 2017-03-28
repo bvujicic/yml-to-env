@@ -14,7 +14,7 @@ class Config(collections.UserDict):
         """
         Update both the object and the environment variable.
         """
-        self.data.update({key: value})
+        self.data[key] = value
         self.to_env(data={key: value})
 
     def __call__(self, value, default=None):
