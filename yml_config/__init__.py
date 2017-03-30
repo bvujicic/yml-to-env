@@ -17,7 +17,7 @@ class Config(collections.UserDict):
         self.data[key] = value
         self.to_env(data={key: value})
 
-    def __call__(self, value, default=None):
+    def __call__(self, value, default=''):
         return os.environ.get(value, default)
 
     def __repr__(self):

@@ -67,6 +67,7 @@ class TestConfig:
 
     def test_retrieve_variable_fail(self, config_yml):
         assert config_yml('WRONG_KEY', 'wrong_value') == 'wrong_value'
+        assert config_yml('WRONG_KEY') == ''
 
     def test_set_variable_success(self, config_yml):
         test_value = 'test_value'
